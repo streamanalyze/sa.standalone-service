@@ -3,7 +3,8 @@
 TL;DR
 
 ```bash
-docker run --env SA_FED_SERVICES_EXTERNAL_ADDRESS=https://<<<EXTERNAL-IP-OR-HOST-TO-YOUR-MACHINE>>>:443 -p 443:3001 ghcr.io/streamanalyze/sa.standalone-studio:<VERSION>
+docker run --env SA_FED_SERVICES_EXTERNAL_ADDRESS=https://<<<EXTERNAL-IP-OR-HOST-TO-YOUR-MACHINE>>>:443 \
+           -p 443:3001 ghcr.io/streamanalyze/sa.standalone-studio:<VERSION>
 ```
 
 DR;TR
@@ -13,7 +14,7 @@ This package allows you to host your own standalone SA Studio along with a names
 The easiest way to get started is by launching a container with the environment variable `SA_FED_SERVICES_EXTERNAL_ADDRESS` set to the address of your server accessible to users and edges. Make sure to map the public port from your address to port 3001 in the container:
 
 ```bash
-docker run --env SA_FED_SERVICES_EXTERNAL_ADDRESS=https://172.26.53.154:443 -p 443:3001 ghcr.io/streamanalyze/sa.standalone-studio:5.1.2.0
+docker run --env SA_FED_SERVICES_EXTERNAL_ADDRESS=https://172.26.53.154:443 -p 443:3001 ghcr.io/streamanalyze/sa.standalone-studio:<VERSION>
 ```
 
 Running the container like this will generate self-signed certificates and create an admin user with a password that will be displayed in the log. A successful startup will produce output similar to this:
@@ -58,7 +59,7 @@ If you mount an empty directory as `/home/root/SA`, the container will generate 
 
 ```bash
 mkdir SA
-docker run --env SA_FED_SERVICES_EXTERNAL_ADDRESS=https://172.26.53.154:443 -p 443:3001 -v $(pwd)/SA:/home/root/SA ghcr.io/streamanalyze/sa.standalone-studio:5.1.2.0
+docker run --env SA_FED_SERVICES_EXTERNAL_ADDRESS=https://172.26.53.154:443 -p 443:3001 -v $(pwd)/SA:/home/root/SA ghcr.io/streamanalyze/sa.standalone-studio:<VERSION>
 ########### SA Standalone-studio ###########
 ...
 Adding a password for the user admin
@@ -76,7 +77,7 @@ ls -laR SA
 Next time, starting the container in the same way will reuse the certificates and `.htpasswd` file:
 
 ```bash
-docker run --env SA_FED_SERVICES_EXTERNAL_ADDRESS=https://172.26.53.154:443 -p 443:3001 -v $(pwd)/SA:/home/root/SA ghcr.io/streamanalyze/sa.standalone-studio:5.1.2.0
+docker run --env SA_FED_SERVICES_EXTERNAL_ADDRESS=https://172.26.53.154:443 -p 443:3001 -v $(pwd)/SA:/home/root/SA ghcr.io/streamanalyze/sa.standalone-studio:<VERSION>
 ```
 
 ### Pro Tip No. 2: Update the htpasswd File During Operations
