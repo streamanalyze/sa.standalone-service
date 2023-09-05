@@ -3,7 +3,7 @@
 TL;DR
 
 ```bash
-docker run --env SA_FED_SERVICES_EXTERNAL_ADDRESS=https://<<<IP-OR-HOST>>>:443 -p 443:3001 ghcr.io/streamanalyze/sa.standalone-studio:5.1.2.0
+docker run --env SA_FED_SERVICES_EXTERNAL_ADDRESS=https://<<<EXTERNAL-IP-OR-HOST-TO-YOUR-MACHINE>>>:443 -p 443:3001 ghcr.io/streamanalyze/sa.standalone-studio:<VERSION>
 ```
 
 DR;TR
