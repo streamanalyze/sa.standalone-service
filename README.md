@@ -11,13 +11,14 @@ DR;TR
 
 This package allows you to host your own standalone SA Studio along with a nameserver. It is not intended for production use with high availability or for more than a few edges.
 
-The easiest way to get started is by launching a container with the environment variable `SA_FED_SERVICES_EXTERNAL_ADDRESS` set to the address of your server accessible to users and edges. Make sure to map the public port from your address to port 3001 in the container:
+The easiest way to get started is by launching a container with the environment variable `SA_FED_SERVICES_EXTERNAL_ADDRESS` set to the address where your server can be accessed by users and edges. Make sure you map the public port of your address to port 3001 in the container:
 
 ```bash
 docker run --env SA_FED_SERVICES_EXTERNAL_ADDRESS=https://172.26.53.154:443 -p 443:3001 ghcr.io/streamanalyze/sa.standalone-studio:<VERSION>
 ```
 
-Running the container like this will generate self-signed certificates and create an admin user with a password that will be displayed in the log. A successful startup will produce output similar to this:
+Running the container like this will generate self-signed certificates and create an admin user with a password 
+that will be displayed in the log. A successful startup will produce output similar to this:
 
 ```plaintext
 ########### SA Standalone-studio ###########
@@ -46,7 +47,8 @@ Standalone Studio starting at https://172.26.53.154:443
 
 ## Manual Configuration of Your Standalone Studio
 
-You can provide your own certificates and `.htpasswd` file by mounting a folder from your host to `/home/root/SA` and adding the following files to that folder:
+You can provide your own certificates and `.htpasswd` file by mounting a 
+folder from your host to `/home/root/SA` and adding the following files to that folder:
 
 * `tls/ca.crt` - The certificate authority used to sign `cert.crt`. The common name (CN) of the CA must match either the host of `SA_FED_SERVICES_EXTERNAL_ADDRESS` or the name provided by `SA_FED_SERVICES_COMMON_NAME`.
 * `tls/cert.crt` - The certificate that the nginx server will use to handle https/wss traffic.
