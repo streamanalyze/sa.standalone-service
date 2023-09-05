@@ -1,5 +1,13 @@
 # sa.standalone-service
 
+TL;DR
+
+```bash
+docker run --env SA_FED_SERVICES_EXTERNAL_ADDRESS=https://<<<IP-OR-HOST>>>:443 -p 443:3001 ghcr.io/streamanalyze/sa.standalone-studio:5.1.2.0
+```
+
+DR;TR
+
 This package allows you to host your own standalone SA Studio along with a nameserver. It is not intended for production use with high availability or for more than a few edges.
 
 The easiest way to get started is by launching a container with the environment variable `SA_FED_SERVICES_EXTERNAL_ADDRESS` set to the address of your server accessible to users and edges. Make sure to map the public port from your address to port 3001 in the container:
